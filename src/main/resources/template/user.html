@@ -7,10 +7,12 @@
     <link rel="stylesheet"
           th:href="@{https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}">
+
 </head>
 <body>
 
 <nav th:insert="header.html :: header"></nav>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
 <div class="full height image">
     <div class="ui main container">
@@ -122,9 +124,9 @@
                                     <p style="color:red;">＊</p>
                                 </td>
                                 <td>
-                                    <p>例：123-4567</p>
+                                    <p>例：1234567</p>
                                     <div class="field" th:classappend="${errors.hasError('zipCode')} ? 'error'">
-                                        <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}"/>
+                                        <input type="text" class="zipcode" name="zipCode_1" size="4" maxlength="3" th:value="${form.zipCode_1}" > <span class="unit">-</span> <input type="text" class="zipcode" name="zipCode_2"  size="5" maxlength="4" th:value="${form.zipCode_2}" onKeyUp="AjaxZip3.zip2addr(zipCode_1,'zipCode_2','address','address');"/>
                                         <p th:if="${errors.hasError('zipCode')}"
                                            th:text="${errors.getMessage('zipCode')}" class="error-message">
                                         </p>

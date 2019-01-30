@@ -42,7 +42,7 @@
                             <tr>
                                 <td>
                                     <span style="color:red;">＊</span>
-                                        <label> お名前（漢字）</label>
+                                    <label> お名前（漢字）</label>
                                     <p>例：ＴＩＳ　太郎</p>
                                     <div class="field" th:classappend="${errors.hasError('kanjiName')} ? 'error'">
                                         <input type="text" name="kanjiName" th:value="${form.kanjiName}"/>
@@ -288,10 +288,10 @@
                                 <!--/*戻る場合、formの送り先を強制的に書き換える*/-->
                                 <button class="ui button angle left icon"
                                         onclick="form.action='/action/order/backToAccept';return true">戻る
-                                </button>
+                                </button>>
                             </div>
                             <div class="eight wide column right aligned">
-                                <button class="ui teal button angle right icon">次へ（お勤め先情報の入力）</button>
+                                <button class="ui teal button angle right icon" > 次へ（お勤め先情報の入力）</button>
                             </div>
                         </div>
                     </form>

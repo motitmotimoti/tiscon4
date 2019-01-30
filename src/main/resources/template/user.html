@@ -9,6 +9,42 @@
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 
+<script>function kanji(input){
+if (input.value.match(/^[^\x01-\x7E\xA1-\xDF　]+$/))
+{}
+else
+alert("失敗");
+}
+
+function katakana(input){
+if (input.value.match(/^[\u30a1-\u30f6　]+$/))
+{}
+else
+alert("失敗");
+}
+
+function romaji(input){
+if (input.value.match(/^[A-Z]+$/))
+{}
+else
+alert("失敗");
+}
+
+function hankaku(input){
+if (input.value.match(/^[0-9a-zA-Z\-\/@]+$/))
+{}
+else
+alert("失敗");
+}
+
+function zenkaku(input){
+if (input.value.match(/^[^\x01-\x7E\xA1-\xDF0-9ー]+$/))
+{}
+else
+alert("失敗");
+}
+</script>
+
 <body>
 
 <nav th:insert="header.html :: header"></nav>
@@ -45,7 +81,7 @@
                                         <label> お名前（漢字）</label>
                                     <p>例：ＴＩＳ　太郎</p>
                                     <div class="field" th:classappend="${errors.hasError('kanjiName')} ? 'error'">
-                                        <input type="text" name="kanjiName" th:value="${form.kanjiName}"/>
+                                        <input type="text" name="kanjiName" th:value="${form.kanjiName}" onchange="kanji(this)";/>
                                         <p th:if="${errors.hasError('kanjiName')}"
                                            th:text="${errors.getMessage('kanjiName')}" class="error-message">
                                         </p>
@@ -58,7 +94,7 @@
                                     <label>お名前（カタカナ）</label>
                                     <p>例：ティーアイエス　タロウ</p>
                                     <div class="field" th:classappend="${errors.hasError('kanaName')} ? 'error'">
-                                        <input type="text" name="kanaName" th:value="${form.kanaName}"/>
+                                        <input type="text" name="kanaName" th:value="${form.kanaName}" onchange="katakana(this)";/>
                                         <p th:if="${errors.hasError('kanaName')}"
                                            th:text="${errors.getMessage('kanaName')}" class="error-message">
                                         </p>
@@ -71,7 +107,7 @@
                                     <label>お名前（ローマ字）</label>
                                     <p>例：TIS TAROU</p>
                                     <div class="field" th:classappend="${errors.hasError('alphabetName')} ? 'error'">
-                                        <input type="text" name="alphabetName" th:value="${form.alphabetName}"/>
+                                        <input type="text" name="alphabetName" th:value="${form.alphabetName}" onchange="romaji(this)";/>
                                         <p th:if="${errors.hasError('alphabetName')}"
                                            th:text="${errors.getMessage('alphabetName')}" class="error-message">
                                         </p>
@@ -101,7 +137,7 @@
                                     <label>生年月日（半角）</label>
                                     <p>例：1990/01/01</p>
                                     <div class="field" th:classappend="${errors.hasError('dateOfBirth')} ? 'error'">
-                                        <input type="text" name="dateOfBirth" th:value="${form.dateOfBirth}"/>
+                                        <input type="text" name="dateOfBirth" th:value="${form.dateOfBirth}" onchange="hankaku(this)";/>
 
                                         <p th:if="${errors.hasError('dateOfBirth')}"
                                            th:text="${errors.getMessage('dateOfBirth')}" class="error-message">
@@ -115,7 +151,7 @@
                                     <label>郵便番号（半角）</label>
                                     <p>例：123-4567</p>
                                     <div class="field" th:classappend="${errors.hasError('zipCode')} ? 'error'">
-                                        <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');"/>
+                                        <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');" onchange="hankaku(this)";/>
                                         <p th:if="${errors.hasError('zipCode')}"
                                            th:text="${errors.getMessage('zipCode')}" class="error-message">
                                         </p>
@@ -128,7 +164,7 @@
                                     <label>ご住所（全角）</label>
                                     <p>例：東京都新宿区西新宿８－１７－１</p>
                                     <div class="field" th:classappend="${errors.hasError('address')} ? 'error'">
-                                        <input type="text" name="address" th:value="${form.address}"/>
+                                        <input type="text" name="address" th:value="${form.address}" onchange="zenkaku(this)";/>
                                         <p th:if="${errors.hasError('address')}"
                                            th:text="${errors.getMessage('address')}" class="error-message">
                                         </p>
@@ -141,7 +177,7 @@
                                     <label>自宅電話番号（半角）</label>
                                     <p>例：00-1111-2222</p>
                                     <div class="field" th:classappend="${errors.hasError('homePhoneNumber')} ? 'error'">
-                                        <input type="text" name="homePhoneNumber" th:value="${form.homePhoneNumber}"/>
+                                        <input type="text" name="homePhoneNumber" th:value="${form.homePhoneNumber}" onchange="hankaku(this)";/>
                                         <p th:if="${errors.hasError('homePhoneNumber')}"
                                            th:text="${errors.getMessage('homePhoneNumber')}" class="error-message">
                                         </p>
@@ -156,7 +192,7 @@
                                     <div class="field"
                                          th:classappend="${errors.hasError('mobilePhoneNumber')} ? 'error'">
                                         <input type="text" name="mobilePhoneNumber"
-                                               th:value="${form.mobilePhoneNumber}"/>
+                                               th:value="${form.mobilePhoneNumber}" onchange="hankaku(this)";/>
                                         <p th:if="${errors.hasError('mobilePhoneNumber')}"
                                            th:text="${errors.getMessage('mobilePhoneNumber')}" class="error-message">
                                         </p>
@@ -169,7 +205,7 @@
                                     <label>メールアドレス（半角）</label>
                                     <p>例：sample@docomo.ne.jp</p>
                                     <div class="field" th:classappend="${errors.hasError('emailAddress')} ? 'error'">
-                                        <input type="text" name="emailAddress" th:value="${form.emailAddress}"/>
+                                        <input type="text" name="emailAddress" th:value="${form.emailAddress}" onchange="hankaku(this)";/>
                                         <p th:if="${errors.hasError('emailAddress')}"
                                            th:text="${errors.getMessage('emailAddress')}" class="error-message">
                                         </p>
@@ -196,8 +232,8 @@
                                     <span style="color:red;">＊</span>
                                     <label>昨年の所得（半角）</label>
                                     <div class="field" th:classappend="${errors.hasError('income')} ? 'error'">
-                                        <input type="text" class="number" name="income" th:value="${form.income}"/><span
-                                            class="unit">万円</span>
+                                        <input type="text" class="number" name="income" th:value="${form.income}" onchange="hankaku(this)";/>
+                                        <span class="unit">万円</span>
                                         <p th:if="${errors.hasError('income')}" th:text="${errors.getMessage('income')}"
                                            class="error-message">
                                         </p>
@@ -223,7 +259,7 @@
                                     <label>「その他 (有職）」を選んだ方は内容をご記入下さい（全角）</label>
                                     <div class="field"
                                          th:classappend="|${errors.hasError('otherJob')?'error': ''} ${errors.hasError('valueOtherJob')?'error': ''}|">
-                                        <input type="text" name="otherJob" th:value="${form.otherJob}"/>
+                                        <input type="text" name="otherJob" th:value="${form.otherJob}" onchange="zenkaku(this)";/>
                                         <p th:if="${errors.hasError('otherJob')}"
                                            th:text="${errors.getMessage('otherJob')}" class="error-message">
                                         </p>
@@ -253,7 +289,7 @@
                                     <label>「はい」 を選んだ方は内容をご記入下さい（全角）</label>
                                     <div class="field"
                                          th:classappend="|${errors.hasError('medicalHistory')?'error': ''} ${errors.hasError('valueMedicalHistory')?'error': ''}|">
-                                        <input type="text" name="medicalHistory" th:value="${form.medicalHistory}"/>
+                                        <input type="text" name="medicalHistory" th:value="${form.medicalHistory}" onchange="zenkaku(this)";/>
                                         <p th:if="${errors.hasError('medicalHistory')}"
                                            th:text="${errors.getMessage('medicalHistory')}" class="error-message">
                                         </p>

@@ -31,7 +31,7 @@
                 <div class="user-block">
                     <h1 class="ui aligned header teal">お申込み情報</h1>
 
-                    <form class="ui form" method="post" action="/action/order/inputJob">
+                    <form name="form1" class="ui form" method="post" action="/action/order/inputJob">
 
                         <div class="ui horizontal divider">ご本人について</div>
 
@@ -208,20 +208,34 @@
                                 <td>
                                     <span style="color:red;">＊</span>
                                     <label>ご職業</label>
-                                    <form name="formjob">
-                                        <select name="job" th:field="*{job}">
+                                        <select name="job" th:field="*{job}" onchange="changeotherjob()">
                                             <span th:each="item : ${jobTypes}" class="field"
                                                 th:classappend="${errors.hasError('job')} ? 'error'">
-                                                <option th:value="${item.code}" th:text="${item.label}"/>
+                                                <option th:value="${item.code}" th:text="${item.label}" th:selected="${form.job}==${item.code}"/>
                                             </span>
                                         </select>
-                                    </form>
+                                    <script>
+                                        function changeotherjob(){
+                                            const pd = document.form1.job;
+                                            const num = pd.selectedIndex;
+                                            const str = pd.options[num].value;
+                                            if(str != "他有職"){
+                                                document.getElementById("tr1").style.display = "none";
+                                            }else{
+                                                document.getElementById("tr1").style = "";
+                                            }
+                                        }
+
+                                        window.onload = function(){
+                                            changeotherjob();
+                                        }
+                                    </script>
                                     <p th:if="${errors.hasError('job')}" th:text="${errors.getMessage('job')}"
                                        class="error-message">
                                     </p>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="tr1">
                                 <td>
                                     <label>「その他 (有職）」を選んだ方は内容をご記入下さい（全角）</label>
                                     <div class="field"

@@ -208,12 +208,14 @@
                                 <td>
                                     <span style="color:red;">＊</span>
                                     <label>ご職業</label>
-                                    <select id="job" th:field="*{job}">
-                                        <span th:each="item : ${jobTypes}" class="field"
-                                              th:classappend="${errors.hasError('job')} ? 'error'">
-                                            <option th:value="${item.code}" th:text="${item.label}"/>
-                                        </span>
-                                    </select>
+                                    <form name="formjob">
+                                        <select name="job" th:field="*{job}">
+                                            <span th:each="item : ${jobTypes}" class="field"
+                                                th:classappend="${errors.hasError('job')} ? 'error'">
+                                                <option th:value="${item.code}" th:text="${item.label}"/>
+                                            </span>
+                                        </select>
+                                    </form>
                                     <p th:if="${errors.hasError('job')}" th:text="${errors.getMessage('job')}"
                                        class="error-message">
                                     </p>

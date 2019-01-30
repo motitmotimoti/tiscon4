@@ -68,6 +68,7 @@ public class OrderAction {
         ctx.setRequestScopedVar("marriedTypes", MarriedType.values());
         ctx.setRequestScopedVar("jobTypes", JobType.values());
         ctx.setRequestScopedVar("treatedTypes", TreatedType.values());
+        //性別・結婚・職業・医師の検査　の値を取得
 
         return new HttpResponse("user.html");
     }

@@ -294,6 +294,12 @@ public final class VariousValidationUtil {
     /** ハイフンがない場合の郵便番号パターン */
     private static final Pattern ZIP_NUM_WITH_NO_HYPHEN = Pattern.compile("^[\\d]{7}$");
 
+    /**３桁の場合*/
+    //private static final Pattern ZIP_NUM_WITH_3_STRING = Pattern.compile("^[\\d]{3}$");
+
+    /**４桁の場合*/
+    //private static final Pattern ZIP_NUM_WITH_4_STRING = Pattern.compile("^[\\d]{4}$");
+
     /**
      * 有効な郵便番号であるかを精査する。<br>
      * <br>
@@ -303,6 +309,9 @@ public final class VariousValidationUtil {
      * <li>null、空白は許容する。</li>
      * <li>3桁数字-(ハイフン)4桁数字</li>
      * <li>7桁数字</li>
+     *
+     * inputを２つに変えたので、最初は３桁または４桁であることを精査仕様とする
+     *
      *
      * @param value 精査対象文字列
      * @return 有効な郵便番号である場合、{@code true}。
@@ -316,6 +325,9 @@ public final class VariousValidationUtil {
         if (ZIP_NUM_WITH_HYPHEN.matcher(value).matches() || ZIP_NUM_WITH_NO_HYPHEN.matcher(value).matches()) {
             return true;
         }
+//        if(ZIP_NUM_WITH_3_STRING.matcher(value).matches() || ZIP_NUM_WITH_4_STRING.matcher(value).matches()){
+//        return true;
+//        }
 
         return false;
     }

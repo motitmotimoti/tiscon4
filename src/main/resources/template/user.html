@@ -12,6 +12,7 @@
 <body>
 
 <nav th:insert="header.html :: header"></nav>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js"></script>
 
 <div class="full height image">
     <div class="ui main container">
@@ -114,7 +115,7 @@
                                     <label>郵便番号（半角）</label>
                                     <p>例：123-4567</p>
                                     <div class="field" th:classappend="${errors.hasError('zipCode')} ? 'error'">
-                                        <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}"/>
+                                        <input type="text" class="zipcode" name="zipCode" th:value="${form.zipCode}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','address','address');"/>
                                         <p th:if="${errors.hasError('zipCode')}"
                                            th:text="${errors.getMessage('zipCode')}" class="error-message">
                                         </p>

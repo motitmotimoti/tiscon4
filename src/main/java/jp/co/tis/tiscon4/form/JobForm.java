@@ -14,7 +14,8 @@ public class JobForm implements Serializable {
 
     /** 勤務先郵便番号 */
     @Domain("employerZipCode")
-    private String employerZipCode_1;
+    private String employerZipCode;
+    /*private String employerZipCode_1;
     private String employerZipCode_2;
 
     public String getEmployerZipCode_1() {
@@ -31,7 +32,7 @@ public class JobForm implements Serializable {
 
     public void setEmployerZipCode_2(String employerZipCode_2) {
         this.employerZipCode_2 = employerZipCode_2;
-    }
+    }*/
 
     /** 勤務先住所 */
     @Domain("employerAddress")
@@ -53,13 +54,9 @@ public class JobForm implements Serializable {
         this.employerName = employerName;
     }
 
-//    public String getEmployerZipCode() {
-//        return employerZipCode;
-//    }
+    public String getEmployerZipCode() {return employerZipCode; }
 
-//    public void setEmployerZipCode(String employerZipCode) {
-//        this.employerZipCode = employerZipCode;
-//    }
+    public void setEmployerZipCode(String employerZipCode) {this.employerZipCode = employerZipCode; }
 
     public String getEmployerAddress() {
         return employerAddress;

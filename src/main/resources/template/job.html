@@ -11,6 +11,7 @@
 <body>
 
 <nav th:insert="header.html :: header"></nav>
+<script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
 <div class="full height image">
     <div class="ui main container">
@@ -60,7 +61,7 @@
                                 <td>
                                     <p>例：123-4567</p>
                                     <div class="field" th:classappend="${errors.hasError('employerZipCode')} ? 'error'">
-                                        <input type="text" name="employerZipCode_1" th:value="${form.employerZipCode_1}"/>　<span class="unit">-</span> <input type="text" name="employerZipCode_2" th:value="${form.employerZipCode_1}" onKeyUp="AjaxZip3.zip2addr(employerZipCode_1,'employerZipCode_2','employerAddress','employerAddress');"/>
+                                        <input type="text" class="zipcode" name="employerZipCode"  th:value="${form.employerZipCode}" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','employerAddress','employerAddress');"/>
                                         <p th:if="${errors.hasError('employerZipCode')}"
                                            th:text="${errors.getMessage('employerZipCode')}" class="error-message">
                                         </p>

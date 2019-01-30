@@ -41,8 +41,9 @@ public class UserForm implements Serializable {
     /** 郵便番号 */
     @Required
     @Domain("zipCode")
-    //private String zipCode;
-    private String zipCode_1;
+    private String zipCode;
+    /*private String zipCode_1;
+    private String zipCode_2;
 
     public String getZipCode_1() {
         return zipCode_1;
@@ -60,8 +61,9 @@ public class UserForm implements Serializable {
     public void setZipCode_2(String zipCode_2) {
         this.zipCode_2 = zipCode_2;
     }
+    */
 
-    private String zipCode_2;
+
 
 
 
@@ -153,9 +155,9 @@ public class UserForm implements Serializable {
         this.gender = gender;
     }
 
-//    public String getZipCode() { return zipCode; }
+    public String getZipCode() { return zipCode; }
 
-//    public void setZipCode(String zipCode) { this.zipCode = zipCode; }
+   public void setZipCode(String zipCode) { this.zipCode = zipCode; }
 
     public String getAddress() {
         return address;

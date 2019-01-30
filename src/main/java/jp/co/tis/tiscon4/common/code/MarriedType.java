@@ -5,7 +5,7 @@ public enum MarriedType implements CodeEnum {
     /** 配偶者あり */
     MARRIED("1", "配偶者あり"),
     /** 配偶者なし */
-    UNMARRIED("0", "配偶者なし");
+    UNMARRIED("0", "なし");
 
     /** 配偶者有無のラベル */
     private final String label;

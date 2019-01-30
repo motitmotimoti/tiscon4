@@ -81,14 +81,14 @@
                             <tr>
                                 <td>
                                     <span style="color:red;">＊</span>
-                                    <label>性別</label>
-                                    <div th:each="item : ${genderTypes}" class="field"
+                                    <label>性別</label><br>
+                                    <span th:each="item : ${genderTypes}" class="field"
                                          th:classappend="${errors.hasError('gender')} ? 'error'">
                                         <input type="radio" name="gender" th:value="${item.code}"
                                                th:text="${item.label}" th:field="*{gender}"
                                                th:checked="${form.gender}==${item.code}"/>
 
-                                    </div>
+                                    </span>
                                     <p th:if="${errors.hasError('gender')}" th:text="${errors.getMessage('gender')}"
                                        class="error-message">
                                     </p>
@@ -179,13 +179,13 @@
                             <tr>
                                 <td>
                                     <span style="color:red;">＊</span>
-                                    <label>配偶者有無</label>
-                                    <div th:each="item : ${marriedTypes}" class="field"
+                                    <label>配偶者有無</label><br>
+                                    <span th:each="item : ${marriedTypes}" class="field"
                                          th:classappend="${errors.hasError('married')} ? 'error'">
                                         <input type="radio" name="married" th:value="${item.code}"
                                                th:text="${item.label}" th:field="*{married}"
                                                th:checked="${form.married}==${item.code}"/>
-                                    </div>
+                                    </span>
                                     <p th:if="${errors.hasError('married')}" th:text="${errors.getMessage('married')}"
                                        class="error-message">
                                     </p>
@@ -208,11 +208,12 @@
                                 <td>
                                     <span style="color:red;">＊</span>
                                     <label>ご職業</label>
-                                    <div th:each="item : ${jobTypes}" class="field"
-                                         th:classappend="${errors.hasError('job')} ? 'error'">
-                                        <input type="radio" name="job" th:value="${item.code}" th:text="${item.label}"
-                                               th:field="*{job}" th:checked="${form.job}==${item.code}"/>
-                                    </div>
+                                    <select id="job" th:field="*{job}">
+                                        <span th:each="item : ${jobTypes}" class="field"
+                                              th:classappend="${errors.hasError('job')} ? 'error'">
+                                            <option th:value="${item.code}" th:text="${item.label}"/>
+                                        </span>
+                                    </select>
                                     <p th:if="${errors.hasError('job')}" th:text="${errors.getMessage('job')}"
                                        class="error-message">
                                     </p>
@@ -236,13 +237,13 @@
                             <tr>
                                 <td>
                                     <span style="color:red;">＊</span>
-                                    <label>過去5年以内に、病気やケガで7日間以上にわたって医師の診察・検査・治療・投薬をうけたことがありますか</label>
-                                    <div th:each="item : ${treatedTypes}" class="field"
+                                    <label>過去5年以内に、病気やケガで7日間以上にわたって医師の診察・検査・治療・投薬をうけたことがありますか</label><br>
+                                    <span th:each="item : ${treatedTypes}" class="field"
                                          th:classappend="${errors.hasError('treatedTypes')} ? 'error'">
                                         <input type="radio" name="treated" th:value="${item.code}"
                                                th:text="${item.label}" th:field="*{treated}"
                                                th:checked="${form.treated}==${item.code}"/>
-                                    </div>
+                                    </span>
                                     <p th:if="${errors.hasError('treated')}" th:text="${errors.getMessage('treated')}"
                                        class="error-message">
                                     </p>

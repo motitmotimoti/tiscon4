@@ -68,7 +68,7 @@ public class OrderAction {
         ctx.setRequestScopedVar("marriedTypes", MarriedType.values());
         ctx.setRequestScopedVar("jobTypes", JobType.values());
         ctx.setRequestScopedVar("treatedTypes", TreatedType.values());
-        //性別・結婚・職業・医師の検査　の値を取得
+
 
         return new HttpResponse("user.html");
     }
@@ -93,7 +93,7 @@ public class OrderAction {
             throw new ApplicationException(message);
         }
 
-        UniversalDao.findAllBySqlFile(ZipcodeDto.class, "ZIPCODE_LIST");
+        //UniversalDao.findAllBySqlFile(ZipcodeDto.class, "ZIPCODE_LIST");
 
         BeanUtil.copy(form, insOrder);
 
@@ -133,6 +133,7 @@ public class OrderAction {
         JobForm form = ctx.getRequestScopedVar("form");
         InsuranceOrder insOrder = SessionUtil.get(ctx, "insOrder");
 
+        UniversalDao.findAllBySqlFile(ZipcodeDto.class, "ZIPCODE_LIST");
         BeanUtil.copy(form, insOrder);
 
         UniversalDao.insert(insOrder);
